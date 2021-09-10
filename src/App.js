@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar/NavBar";
 import Banner from "./components/Banner/Banner";
 import Row from "./components/Row/Row";
-import {getTrendingUrl, getGenreUrl, getGenresUrl, getTopRatedUrl} from "./api/tmdb";
+import {getGenresUrl, getGenreUrl, getTrendingUrl} from "./api/tmdb";
 import React, {createContext, useEffect, useState} from "react";
 import {GlobalStyle} from "./GlobalStyles";
 import axios from "axios";
@@ -12,7 +12,7 @@ export const GlobalContext = createContext({});
 function App() {
   const [genres, setGenres] = useState([]);
   const [mediaType, setMediaType] = useState("tv");
-  
+
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -24,7 +24,7 @@ function App() {
     };
     fetchGenres().then();
   }, [mediaType]);
-  
+
   return (
     <div className="App">
       <NavBar setMediaType={setMediaType} mediaType={mediaType}/>

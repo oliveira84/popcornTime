@@ -3,7 +3,6 @@ import {Container, Content, Frame, ScrollX, Thumbnail, Wrapper} from "./RowStyle
 import axios from "axios";
 import {imageBaseUrl, imageSize} from "../../api/tmdb";
 import {ChevronLeft, ChevronRight} from "@material-ui/icons";
-import {truncate} from "../../utils";
 import Details from "../Details/Details";
 
 

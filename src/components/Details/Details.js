@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Content} from "./DetailsStyles";
 import {Cancel} from "@material-ui/icons";
 import {GlobalContext} from "../../App";
@@ -10,8 +10,7 @@ export const Details = ({movie, setMovie}) => {
   const {genres, mediaType} = useContext(GlobalContext);
   const [imdbUrl, setImdUrl] = useState("")
   const [youtubeId, setYoutubeId] = useState("");
-  const detailsRef = useRef()
-  
+
   // getImdbURL
   useEffect(() => {
     if (!movie) return;
@@ -25,7 +24,7 @@ export const Details = ({movie, setMovie}) => {
     };
     fetchGenres().then();
   }, [mediaType, movie]);
-  
+
   // getYoutubeId
   useEffect(() => {
     if (!movie) return;
@@ -40,8 +39,7 @@ export const Details = ({movie, setMovie}) => {
     };
     fetchGenres().then();
   }, [movie, mediaType])
-  console.log(detailsRef)
-  
+
   return (
     <Content
       className={movie ? "open" : "close"}
@@ -63,14 +61,14 @@ export const Details = ({movie, setMovie}) => {
           {genres && <p><span className={"name"}>Genre</span> <em>{
             (genres.filter((genre => movie.genre_ids.includes(genre.id)))).map((genre, index) => ` ${index > 0 ? "| " : ""}${genre.name}`)
           }</em></p>}
-          <a href={imdbUrl} target="_blank">
+          <a href={imdbUrl} target="_blank" rel="noreferrer">
             <img src="images/IMDB_Logo.svg" alt="IMDB details"/>
           </a>
         </div>
         {youtubeId && <Youtube embedId={youtubeId}/>}
       </>
       }
-    
+
     </Content>
   );
 }

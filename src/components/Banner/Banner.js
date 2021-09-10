@@ -1,18 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Content, Wrapper} from "./BannerStyles";
-import {imageBaseUrl, imageSize, urls} from "../../api/tmdb";
+import {imageBaseUrl, imageSize} from "../../api/tmdb";
 import axios from "axios";
-import {truncate} from "../../utils";
 
 const Banner = ({fetchUrl}) => {
   const [movie, setMovie] = useState(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(fetchUrl)
         const response = await axios.get(fetchUrl);
-        console.log(response)
         setMovie(response.data.results[Math.floor(Math.random() * response.data.results.length)]);
         return response;
       } catch (err) {
@@ -21,7 +18,7 @@ const Banner = ({fetchUrl}) => {
     }
     fetchData().then();
   }, [fetchUrl]);
-  
+
   return (
     <Wrapper image={movie ? `${imageBaseUrl}${imageSize.backdrop}${movie.backdrop_path}` : "images/banner.jpg"}>
       <Content>
