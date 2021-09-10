@@ -1,6 +1,6 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 const baseUrl = 'https://api.themoviedb.org/3';
-export const imageBaseUrl = 'http://image.tmdb.org/t/p';
+export const imageBaseUrl = 'https://image.tmdb.org/t/p';
 
 export const imageSize = {
   thumbnail: "/w300",
